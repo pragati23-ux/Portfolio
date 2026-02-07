@@ -20,7 +20,11 @@ export function Contact({ isDark }: ContactProps) {
 
   // Initialize EmailJS on component mount
   useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY');
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    console.log('Public Key:', publicKey);
+    console.log('Service ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    console.log('Template ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    emailjs.init(publicKey || 'YOUR_PUBLIC_KEY');
   }, []);
 
   const handleChange = (
@@ -45,6 +49,8 @@ export function Contact({ isDark }: ContactProps) {
       message: formData.message,
     };
 
+    console.log('Sending with params:', templateParams);
+
     emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
@@ -52,12 +58,14 @@ export function Contact({ isDark }: ContactProps) {
         templateParams
       )
       .then(() => {
+        console.log('Email sent successfully!');
         setSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
         setLoading(false);
         setTimeout(() => setSubmitted(false), 3000);
       })
       .catch((err) => {
+        console.error('Full Error:', err);
         setError('Failed to send message. Please try again.');
         console.error('EmailJS Error:', err);
         setLoading(false);

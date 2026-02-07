@@ -167,7 +167,7 @@ export function Hero({ isDark }: HeroProps) {
           {/* Right Side - Profile Photo */}
           <motion.div
             variants={itemVariants}
-            className="hidden md:flex justify-center items-center"
+            className="flex justify-center items-center pt-8 md:pt-0"
           >
             <div className="relative">
               {/* Glow Effect Background */}
@@ -176,7 +176,7 @@ export function Hero({ isDark }: HeroProps) {
               }`} />
               
               {/* Profile Image Container */}
-              <div className={`relative w-72 h-72 rounded-full overflow-hidden border-4 shadow-2xl ${
+              <div className={`relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 shadow-2xl ${
                 isDark 
                   ? 'border-blue-400 shadow-blue-900/50' 
                   : 'border-blue-300 shadow-blue-300/50'
