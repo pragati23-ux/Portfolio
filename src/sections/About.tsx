@@ -32,15 +32,16 @@ export function About({ isDark }: AboutProps) {
           </div>
 
           {/* Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            {/* Main Content - Takes 2 columns */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="lg:col-span-2"
             >
-              <p className={`text-lg leading-relaxed mb-6 ${
+              <p className={`text-lg leading-relaxed mb-8 ${
                 isDark ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 I'm a passionate B.Tech Computer Science student
@@ -50,7 +51,7 @@ export function About({ isDark }: AboutProps) {
                 concepts.
               </p>
 
-              <p className={`text-lg leading-relaxed mb-6 ${
+              <p className={`text-lg leading-relaxed mb-8 ${
                 isDark ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 With hands-on experience in the MERN stack, I've developed a
@@ -60,81 +61,72 @@ export function About({ isDark }: AboutProps) {
                 maintainable code.
               </p>
 
-              <p className={`text-lg leading-relaxed ${
+              <p className={`text-lg leading-relaxed mb-8 ${
                 isDark ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 Beyond coding, I'm an active participant in tech communities,
-                have organized hackathons.
-                 I believe in the power of collaborative learning and
+                have organized hackathons, and contribute to open-source
+                projects. I believe in the power of collaborative learning and
                 sharing knowledge with the developer community.
               </p>
             </motion.div>
 
-            {/* Stats */}
+            {/* Highlights - Takes 1 column */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="grid grid-cols-2 gap-6"
+              className="space-y-6"
             >
-              <div className={`p-6 rounded-lg ${
+              <div className={`p-6 rounded-lg backdrop-blur-sm ${
                 isDark
-                  ? 'bg-gray-900 border border-gray-700'
-                  : 'bg-white border border-gray-200'
+                  ? 'bg-gray-900/50 border border-gray-700'
+                  : 'bg-white/50 border border-gray-200'
               }`}>
-                <div className={`text-2xl font-bold mb-2 ${
-                    isDark ? 'text-blue-400' : 'text-blue-600'
-                  }`}>
-                    B.Tech CS
-                  </div>
-                  <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                    Degree
-                  </p>
-              </div>
-
-              <div className={`p-6 rounded-lg ${
-                isDark
-                  ? 'bg-gray-900 border border-gray-700'
-                  : 'bg-white border border-gray-200'
-              }`}>
-                <div className={`text-2xl font-bold mb-2 ${
+                <h3 className={`text-sm font-semibold uppercase tracking-wider mb-2 ${
                   isDark ? 'text-blue-400' : 'text-blue-600'
                 }`}>
-                  Class XII
-                </div>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  Higher Secondary
+                  Focus
+                </h3>
+                <p className={`text-lg font-bold ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>
+                  Full Stack Development
                 </p>
               </div>
 
-              <div className={`p-6 rounded-lg ${
+              <div className={`p-6 rounded-lg backdrop-blur-sm ${
                 isDark
-                  ? 'bg-gray-900 border border-gray-700'
-                  : 'bg-white border border-gray-200'
+                  ? 'bg-gray-900/50 border border-gray-700'
+                  : 'bg-white/50 border border-gray-200'
               }`}>
-                <div className={`text-2xl font-bold mb-2 ${
+                <h3 className={`text-sm font-semibold uppercase tracking-wider mb-2 ${
                   isDark ? 'text-blue-400' : 'text-blue-600'
                 }`}>
-                  Class X
-                </div>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  Secondary Education
+                  Tech Stack
+                </h3>
+                <p className={`text-sm ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  MERN (MongoDB, Express, React, Node.js)
                 </p>
               </div>
 
-              <div className={`p-6 rounded-lg ${
+              <div className={`p-6 rounded-lg backdrop-blur-sm ${
                 isDark
-                  ? 'bg-gray-900 border border-gray-700'
-                  : 'bg-white border border-gray-200'
+                  ? 'bg-gray-900/50 border border-gray-700'
+                  : 'bg-white/50 border border-gray-200'
               }`}>
-                <div className={`text-3xl font-bold mb-2 ${
+                <h3 className={`text-sm font-semibold uppercase tracking-wider mb-2 ${
                   isDark ? 'text-blue-400' : 'text-blue-600'
                 }`}>
-                  2023–2027
-                </div>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  Study Period
+                  Passion
+                </h3>
+                <p className={`text-sm ${
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  Building scalable solutions & Open Source
                 </p>
               </div>
             </motion.div>
