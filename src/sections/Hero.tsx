@@ -181,13 +181,14 @@ export function Hero({ isDark }: HeroProps) {
                   ? 'border-blue-400 shadow-blue-900/50' 
                   : 'border-blue-300 shadow-blue-300/50'
               }`}>
-                
-                  
-                  
-                
-                <img src="/profile.jpg" alt="Pragati Singh - Full Stack Developer"
-                  className="w-full h-full object-cover" />
-
+                <img 
+                  src="/profile.jpg" 
+                  alt="Pragati Singh - Full Stack Developer"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"%3E%3Crect fill="%233B82F6" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-size="24" fill="white"%3EProfile Photo%3C/text%3E%3C/svg%3E';
+                  }}
+                />
               </div>
             </div>
           </motion.div>

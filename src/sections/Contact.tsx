@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Phone, Send } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
 
 interface ContactProps {
   isDark: boolean;
@@ -14,6 +15,13 @@ export function Contact({ isDark }: ContactProps) {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Initialize EmailJS on component mount
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY');
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,11 +35,33 @@ export function Contact({ isDark }: ContactProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here (integrate with backend)
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+    setError('');
+
+    const templateParams = {
+      to_email: 'pragatisingh56786@gmail.com',
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        templateParams
+      )
+      .then(() => {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setLoading(false);
+        setTimeout(() => setSubmitted(false), 3000);
+      })
+      .catch((err) => {
+        setError('Failed to send message. Please try again.');
+        console.error('EmailJS Error:', err);
+        setLoading(false);
+      });
   };
 
   const contactMethods = [
@@ -283,18 +313,31 @@ export function Contact({ isDark }: ContactProps) {
                   </motion.p>
                 )}
 
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-red-600 font-semibold"
+                  >
+                    {error}
+                  </motion.p>
+                )}
+
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  disabled={loading}
+                  whileHover={{ scale: loading ? 1 : 1.05 }}
+                  whileTap={{ scale: loading ? 1 : 0.95 }}
                   className={`w-full flex items-center justify-center gap-2 py-3 rounded-lg font-semibold transition-colors ${
-                    isDark
+                    loading
+                      ? 'opacity-60 cursor-not-allowed'
+                      : isDark
                       ? 'bg-blue-600 hover:bg-blue-700 text-white'
                       : 'bg-blue-600 hover:bg-blue-700 text-white'
                   }`}
                 >
                   <Send size={20} />
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </form>
             </motion.div>
