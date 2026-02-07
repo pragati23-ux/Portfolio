@@ -5,8 +5,15 @@ interface EducationProps {
   isDark: boolean;
 }
 
+interface EducationItem {
+  degree: string;
+  institution: string;
+  period: string;
+  percentage?: string;
+}
+
 export function Education({ isDark }: EducationProps) {
-  const education = [
+  const education: EducationItem[] = [
     {
       degree: 'B.Tech CS',
       institution: 'KIET Group of Institutions',
@@ -16,11 +23,13 @@ export function Education({ isDark }: EducationProps) {
       degree: 'Class XII',
       institution: 'Central Board of Secondary Education (CBSE)',
       period: 'Completed',
+      percentage: '90%',
     },
     {
       degree: 'Class X',
       institution: 'Central Board of Secondary Education (CBSE)',
       period: 'Completed',
+      percentage: '91.5%',
     },
   ];
 
@@ -109,6 +118,13 @@ export function Education({ isDark }: EducationProps) {
                         } mb-2`}>
                           {edu.period}
                         </p>
+                        {edu.percentage && (
+                          <p className={`text-sm font-semibold ${
+                            isDark ? 'text-blue-400' : 'text-blue-600'
+                          }`}>
+                            Percentage: {edu.percentage}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </motion.div>
