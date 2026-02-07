@@ -181,11 +181,13 @@ export function Hero({ isDark }: HeroProps) {
                   ? 'border-blue-400 shadow-blue-900/50' 
                   : 'border-blue-300 shadow-blue-300/50'
               }`}>
-                <img
-                  src="/src/assets/projects/profile.jpg"
-                  alt="Pragati Singh - Full Stack Developer"
-                  className="w-full h-full object-cover"
-                />
+                
+                  
+                  
+                
+                <img src="/profile.jpg" alt="Pragati Singh - Full Stack Developer"
+                  className="w-full h-full object-cover" />
+
               </div>
             </div>
           </motion.div>
