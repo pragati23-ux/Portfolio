@@ -102,9 +102,7 @@ export function Contact({ isDark }: ContactProps) {
   return (
     <section
       id="contact"
-      className={`py-20 transition-colors duration-300 ${
-        isDark ? 'bg-gray-800' : 'bg-gray-50'
-      }`}
+      className={`py-20 transition-colors duration-300`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

@@ -24,24 +24,32 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Apply dark mode to body element for background color
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [isDark]);
+
   return (
-    <div className={isDark ? 'dark' : ''}>
-      <div className={`${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
-        <Navbar isDark={isDark} onToggleDarkMode={toggle} />
+    <div className={`w-full min-h-screen flex flex-col overflow-x-hidden ${isDark ? 'bg-gray-900 text-white dark' : 'bg-white text-gray-900'}`}>
+      <Navbar isDark={isDark} onToggleDarkMode={toggle} />
 
-        {/* Main Content */}
-        <main>
-          <Hero isDark={isDark} />
-          <About isDark={isDark} />
-          <Skills isDark={isDark} />
-          <Projects isDark={isDark} />
-          <Experience isDark={isDark} />
-          <Education isDark={isDark} />
-          <Extracurricular isDark={isDark} />
-          <Contact isDark={isDark} />
-        </main>
+      {/* Main Content */}
+      <main className="w-full flex-1 pt-16">
+        <Hero isDark={isDark} />
+        <About isDark={isDark} />
+        <Skills isDark={isDark} />
+        <Projects isDark={isDark} />
+        <Experience isDark={isDark} />
+        <Education isDark={isDark} />
+        <Extracurricular isDark={isDark} />
+        <Contact isDark={isDark} />
+      </main>
 
-        <Footer isDark={isDark} />
+      <Footer isDark={isDark} />
 
         {/* Scroll to Top Button */}
         {scrolled && (
@@ -57,7 +65,6 @@ function App() {
             ↑
           </button>
         )}
-      </div>
     </div>
   );
 }

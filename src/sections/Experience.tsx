@@ -25,9 +25,7 @@ export function Experience({ isDark }: ExperienceProps) {
   return (
     <section
       id="experience"
-      className={`py-20 transition-colors duration-300 ${
-        isDark ? 'bg-gray-900' : 'bg-white'
-      }`}
+      className={`py-20 transition-colors duration-300`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

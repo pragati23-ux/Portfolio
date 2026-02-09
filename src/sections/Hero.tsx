@@ -29,9 +29,7 @@ export function Hero({ isDark }: HeroProps) {
   return (
     <section
       id="home"
-      className={`min-h-screen flex items-center justify-center pt-20 transition-colors duration-300 ${
-        isDark ? 'bg-gray-900' : 'bg-white'
-      }`}
+      className={`min-h-screen flex items-center justify-center pt-20 transition-colors duration-300`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <motion.div

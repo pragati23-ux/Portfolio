@@ -9,7 +9,7 @@ export function Footer({ isDark }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`transition-colors duration-300 ${
+    <footer className={`w-full transition-colors duration-300 ${
       isDark
         ? 'bg-gray-900 border-gray-800'
         : 'bg-gray-900 border-gray-800'
@@ -28,7 +28,7 @@ export function Footer({ isDark }: FooterProps) {
               <span className="text-blue-400">PS</span>.
             </h3>
             <p className="text-gray-400 text-sm">
-              Full Stack Web Developer | MERN Stack Specialist
+              Full Stack Web Developer | MERN Stack Enthusiast
             </p>
           </motion.div>
 
